@@ -8,6 +8,11 @@ h2 {
     font-size: xx-large;
     margin-left:10px
 }
+.emphasis {
+  font-style: italic;
+  font-weight: bold;
+  font-size: large;
+}
 .collapsible {
     background-color: #777;
     color: white;
@@ -30,4 +35,8 @@ h2 {
     display: none;
     overflow: hidden;
     background-color: #f1f1f1;
+  }
+
+  table {
+    width: 100%;
   }

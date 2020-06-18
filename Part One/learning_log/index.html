@@ -1,51 +1,104 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <base href="/learninglog"/>
-        <link rel="stylesheet" href="Part One/learning_log/css/learninglog.css"/>
-    </head>
-    <body>
-        <h2>Learning Log</h2>
 
-        <button type="button" class="collapsible">Week 1</button>
-        <div class="content">
-            <p>
-                In practical 1 I made a barebones site using HTML. I had to make use of HTML elements to attempt to accurately recreate an example web page that was provided for me.
-                I found that that was a great way to refresh my knowledge of web development and HTML syntax as I had not done this for a long time.
-                I also used this time to begin my final website, creating a portal as my intro page that contained links for both tasks. I also learned that additional pages can be added through hrefs to additional html files
-                I created a repository for my work to have source control and arranged for my site to be hosted on Github Pages. I also created this learning log page and decided on a style that incorporated collapsibles.
-                I decided to use Visual Studio Code for my development as it has an integrated terminal, live server feature, and a highlighting style that I found intuitive.
-            </p>
-            <a href="Part One/practical_1/practical1.html">Practical 1</a>
-            <p>
-                In practical 2 I made changes to this learning log page to fix margins, incorporate css and working js animation for my collapsibles. I removed inline styling for this learning log page.
-                I validated the CSS for my intro page and fixed an error - changing font-size xxx-large to font-size: 36pt, to improve accessibility. Accessibility changes were made to the page created for practical 1.
-                This can be found at the link below
-            </p>
-            <a href="Part One/practical_1/practical1_accessible.html">Accessible task 1</a>
-        </div>
-        <button type="button" class="collapsible">Week 2</button>
-        <div class="content">
-            <p>For Practical 2 I got some images and made small changes to the provided HTML so the mouseover effect changed the image src. I also created a DOM diagram of the site</p>
-            <a href="Part One/practical_2/imageSwap.html">Practical 2</a><br/>
-            <a href="Part One/media/Practical 2 DOM.pdf">DOM Diagram</a>
+<head>
+    <base href="/learninglog" />
+    <link rel="stylesheet" href="Part One/learning_log/css/learninglog.css" />
+</head>
 
-        </div>
-        <button type="button" class="collapsible">Week 3</button>
-        <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <a href="Part One/practical_3/practical3.html">Practical 1</a>
-        </div>
+<body>
+    <h2>Learning Log</h2>
+
+    <button type="button" class="collapsible">Week 1</button>
+    <div class="content">
+        <p>
+            In practical 1 I made a barebones site using HTML. I had to make use of HTML elements to attempt to
+            accurately recreate an example web page that was provided for me.
+            I found that that was a great way to refresh my knowledge of web development and HTML syntax as I had not
+            done this for a long time.
+            I also used this time to begin my final website, creating a portal as my intro page that contained links for
+            both tasks. I also learned that additional pages can be added through hrefs to additional html files
+            I created a repository for my work to have source control and arranged for my site to be hosted on Github
+            Pages. I also created this learning log page and decided on a style that incorporated collapsibles.
+            I decided to use Visual Studio Code for my development as it has an integrated terminal, live server
+            feature, and a highlighting style that I found intuitive.
+        </p>
+        <a href="Part One/practical_1/practical1.html">Practical 1</a>
+        <p>
+            I made changes to this learning log page to fix margins, incorporate css and working js
+            animation for my collapsibles. I removed inline styling for this learning log page.
+            I validated the CSS for my intro page and fixed an error - changing font-size xxx-large to font-size: 36pt,
+            to improve accessibility. Accessibility changes were made to the page created for practical 1.
+            This can be found at the link below
+        </p>
+        <a href="Part One/practical_1/practical1_accessible.html">Accessible task 1</a>
+    </div>
+    <button type="button" class="collapsible">Week 2</button>
+    <div class="content">
+        <p>For Practical 2 I downloaded 2 images and made small changes to the provided HTML so thatthe mouseover effect changed
+            the image source. I also created a DOM diagram of the HTML page, both of which can be found below</p>
+        <p style="color:red">Rollover links & bold blue lines from practical 2</p>
+        <a href="Part One/practical_2/practical2.html">Mouseover site</a><br />
+        <a href="Part One/media/Practical 2 DOM.pdf">DOM Diagram</a>
+
+    </div>
+    <button type="button" class="collapsible">Week 3</button>
+    <div class="content">
+        <p class="emphasis">Analyze and explain the following JavaScript statements:</p>
+        <table>
+            <tr>
+                <th scope="col" align="left">Statement</th>
+                <th scope="col">Meaning</th>
+                <th scope="col" align="left">myAge</th>
+            </tr>
+            <tr>
+                <td>var myAge =45;</td>
+                <td>Declare variable called myAge and assign to it a value of 45</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>myAge += 4;</td>
+                <td>Increment myAge by 4</td>
+                <td>49</td>
+            </tr>
+            <tr>
+                <td>myAge ++;</td>
+                <td>Increment myAge by 1</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>myAge == 40+10</td>
+                <td>Executes a boolean expression to check if myAge is equal to 40+10. Returns true</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>myAge &lt;= 38;</td>
+                <td>Executes a boolean expression to check if myAge is less than or equal to 38. Returns false</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>myAge = 40;</td>
+                <td>Assigns myAge to a value of 40</td>
+                <td>40</td>
+            </tr>
+        </table>
+        <p class="emphasis">What is the value of myAge after the statement myAge = “My age is” + “ ” + myAge ?</p>
+        <p>A: myAge has a String value of "My age is 49" at the initial point before adding statements after 'myAge+=4;'</p>
+        <a href="Part One/practical_3/practical3_myAgeIs49.html">This can be seen here</a>
+        <p>After adding the rest of the statements in task 1, the value of myAge is "My age is 40". Which is correct as the last value in our table for myAge was 40</p>
+        <a href="Part One/practical_3/practical3_myAgeIs40.html">This can be seen here</a>
+        <p class="emphasis">What is the value of the variable myTextContainer?</p>
+        <p>"A web browser will follow your instructions exactly and without an argument." will be the output as each statement appended a new string onto the existing text</p>
+        <a href="Part One/practical_3/practical3_myTextContainer.html">This can be seen here</a>
+        <p class="emphasis">Resolve the errors in the following script</p>
+        <p>The errors have been fixed. A working page can be found <a href="Part One/practical_3/practical3_errorsFixed.html">here</a></p>
+        <p>
+            Practical 3 was my first exposure to JavaScript and I watched the lectures on it and CSS, and on accessibility. I had previously never considered that accessibility was a large
+            driving force for web design methodologies so it was great to learn that and to go back and check that my own site was accessible.
+        </p>
+    </div>
 
 
-    </body>
-    <footer>
-        <script src="Part One/learning_log/js/learninglog.js"></script>
-    </footer>
-</html>
-<!--
-    Make a bunch of rows of the same width, for each practical
-    Each row should contain a link to the web page of the practical exercise
-    And also make them expandable to contain a learning log of the things I learned
--->
-
+</body>
+<footer>
+    <script src="Part One/learning_log/js/learninglog.js"></script>
+</footer>
