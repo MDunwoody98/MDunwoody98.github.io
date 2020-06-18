@@ -5,7 +5,7 @@
     </header>
     <body>
         <h4>Welcome to WorldBooks</h4>
-        <img src="Part One/media/jQueryLogo.png" alt="JQuery logo" height="100" width="80"/>
+        <img src="../media/jQueryLogo.png" alt="JQuery logo" height="100" width="80"/>
         <hr/>
         <h4>Customer Information:</h4>
         <label for="nameEntry">Customer Name: </label><input type="text" id="nameEntry"><br/><br/>
@@ -41,9 +41,17 @@
             </tr>
         </table>
         <br/>
-        <h4 style="display:inline;">Payment Method:</h4><input type="radio" checked>Visa<input type="radio">MasterCard<input type="radio">Switch/Debit<input type="radio">Cheque
+        <h4 style="display:inline;">Payment Method:</h4>
+        <label for="radioVisa">Visa</label><input type="radio" id="radioVisa" checked>
+        <label for="radioMasterCard">MasterCard</label><input type="radio" id="radioMasterCard">
+        <label for="radioSwitch">Switch/Debit</label><input type="radio" id="radioSwitch">
+        <label for="radioCheque">Cheque</label><input type="radio" id="radioCheque">
+
         <h4>I would like to be contacted by:</h4>
-        <input type="checkbox" checked>email<input type="checkbox">mobile<input type="checkbox">post<input type="checkbox">visit
+        <input type="checkbox" id="checkEmail" checked><label for="checkEmail">email</label>
+        <input type="checkbox" id="checkMobile"><label for="checkMobile">mobile</label>
+        <input type="checkbox" id="checkPost"><label for="checkPost">post</label>
+        <input type="checkbox" id="checkVisit"><label for="checkVisit">visit</label>
         <p>Other comments:</p>
         <textarea cols="50">Other Comments </textarea>
         <br/>
