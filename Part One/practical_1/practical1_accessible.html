@@ -5,21 +5,21 @@
     </header>
     <body>
         <h4>Welcome to WorldBooks</h4>
-        <img src="../media/jQueryLogo.png" height="100" width="80"/>
+        <img src="Part One/media/jQueryLogo.png" alt="JQuery logo" height="100" width="80"/>
         <hr/>
         <h4>Customer Information:</h4>
-        <p>Customer Name: <input type="text"></p>
-        <p>Street Address: <input type="text"></p>
-        <p>Email Address: <input type="text"></p>
-        <p>Post Code: <input type="text"></p>
-        <p>Phone Number: <input type="text"></p>
+        <label for="nameEntry">Customer Name: </label><input type="text" id="nameEntry"><br/><br/>
+        <label for="streetEntry">Street Address: </label><input type="text" id="streetEntry"><br/><br/>
+        <label for="emailEntry">Email Address: </label><input type="text" id="emailEntry"><br/><br/>
+        <label for="postEntry">Post Code: </label><input type="text" id="postEntry"><br/><br/>
+        <label for="phoneEntry">Phone Number: </label><input type="text" id="phoneEntry"><br/>
         <h4>Shopping Cart:</h4>
-        <table border="1">
+        <table border="1" summary="Books currently in your shopping cart">
             <tr>
-                <th>Book Title</th>
-                <th>Author</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th scope="col">Book Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
             </tr>
             <tr>
                 <td>The Genius of Photography</td>
