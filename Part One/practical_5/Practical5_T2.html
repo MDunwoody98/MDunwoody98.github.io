@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+        p {
+            white-space: pre;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="number">Input a number to begin countdown </label><br /><input type="text" class="number"><br />
+    <input type="button" value="Start Counting" id="start">
+</body>
+<footer>
+    <script>
+        function displayText(number) {
+            let text = "Start the counting:\n";
+            for (let i = number; i >= 1; i--) {
+                text += "Counter i = " + i + "\n";
+            }
+            text += "Counting is completed!";
+            return text;//count down to 1 from a number
+        }
+        document.getElementById("start").onclick = function () {
+            var number = window.document.getElementsByClassName("number")[0].value;//number to enter into displayText
+            var text = displayText(number);//String value to show countdown
+            var element = document.getElementById("display");
+            if (element) {
+                element.parentNode.removeChild(element);
+            }
+            var newPTag = document.createElement('p');//create a p tag
+            document.createn
+            var newText = document.createTextNode(text);//Create a text node using the text from displayText
+            newPTag.appendChild(newText);//Assign this text node to the p tag we created
+            newPTag.id = "display";//Give this tag an id of 'display'
+            var position = document.getElementsByTagName('body')[0];//Get the position of the body tag
+            position.appendChild(newPTag);//Append this p tag as a new child node to the body tag
+        }
+        //The CSS rule allows for \n to appear as newline
+    </script>
+</footer>
+
+</html>
