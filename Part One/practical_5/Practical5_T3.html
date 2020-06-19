@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head><title></title>
+</head>
+<body>
+    <label for="name">Input your name below </label><br/><input type="text" class="name"><br/>
+</body>
+<footer>
+    <script>
+        var position = document.getElementsByTagName('body')[0];
+        function createH4Node(text){
+            var newPTag = document.createElement('h4');//create a p tag
+            var newTextNode = document.createTextNode(text);
+            newPTag.appendChild(newTextNode);
+            position.appendChild(newPTag);
+        }
+        function displayCourse(){
+            var newPTag = document.createElement('p');//create a p tag
+            var courseNames = ['Software Engineering','Computer Science','Interactive Multimedia Design','Information Communication Technology'];
+            var courseString ="";
+            courseNames.forEach(element => {
+                courseString += element + "\t";
+            });
+            var newText = document.createTextNode(courseString);
+            newPTag.appendChild(newText);
+            position.insertBefore(newPTag, position.firstChild);//Append this p tag as a new child node to the body tag, as its first child
+        }
+
+        //2. 2 radio buttons and a for loop to display each one's name
+        function addRadioButtonsForUnis(){
+            var universityNames = ['Queen\'s University Belfast','University of Ulster']
+            var radio = "radio";
+            for (let i = 0; i < universityNames.length; i++) {
+                var newRadioButton = document.createElement("input");
+                newRadioButton.setAttribute("type","radio");
+                newRadioButton.id = radio+i;
+                if (i==0)
+                    newRadioButton.setAttribute("checked",1);
+                position.appendChild(newRadioButton);
+
+                var newlabel = document.createElement("Label");
+                newlabel.setAttribute("for",radio+i);
+                newlabel.innerHTML = universityNames[i];
+                position.appendChild(newlabel);
+            }
+        }
+
+        //3. set of check box for 4 ulster campuses and for looping to display the list
+        function addCampusCheckboxes(){
+            var ulsterCampusNames = ['Jordanstown','Coleraine','Magee','Belfast'];
+            var checkbox = "checkbox";
+            for (let i = 0; i < ulsterCampusNames.length; i++) {
+                var newCheckbox = document.createElement("input");
+                newCheckbox.setAttribute("type","checkbox");
+                newCheckbox.id = checkbox+i;
+                if (i==0)
+                    newCheckbox.setAttribute("checked",1)
+                position.appendChild(newCheckbox);
+                var newlabel = document.createElement("Label");
+                newlabel.setAttribute("for",checkbox+i);
+                newlabel.innerHTML = ulsterCampusNames[i];
+                position.appendChild(newlabel);
+            }
+        }
+
+        displayCourse();
+        createH4Node("Select the university you attend below");
+        addRadioButtonsForUnis();
+        createH4Node("What campus are you on?");
+        addCampusCheckboxes();
+    </script>
+</footer>
+</html>
