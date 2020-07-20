@@ -1,0 +1,157 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+body {
+    background-color: #F0FFFF;/*Found this colour 'Azure' and really like it for the look of the site*/
+}
+#icon {
+    mix-blend-mode: multiply;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+header{
+    background: url(../media/wholeisland2.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height:700px;
+}
+nav {
+    position:fixed;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.2);
+    padding:0px 20px;
+}
+nav .badge{
+    position: relative;
+    top: 20px;
+    right: 20px;
+}
+.section{
+    background-size: cover;
+    padding-top: 4vw;
+}
+.tabs .indicator{
+    background-color:navy;
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+    background: ghostwhite;
+}
+.logoContainer{
+    position: absolute;
+  top: 13%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color:white;
+  text-shadow: 1px 1px #000000;
+}
+.logoContainer h2{
+    font-size: 70pt;
+}
+.logoContainer h5{
+    font-size: 24pt;
+    font-style: italic;
+}
+main{
+    display: grid;/*Declare grid display*/
+    grid-template-columns: 1fr repeat(12, minmax(auto,60px)) 1fr;/*1fr is a calculated unit for equally sized columns*/
+    grid-gap: 40px;
+    padding:60px 0;
+    /*set min to auto, max to 60px. 12 * 60 = 720. 40px grid gaps and there are 11 gaps so (12*60+40*11)=1160.
+    Content will never exceed 1160px*/
+}
+
+.cards{
+    grid-column: 2 / span 12;
+    display: grid;/*set on 'cards' so that card class can inherit a grid display*/
+    grid-template-columns: repeat(12, minmax(auto,60px));
+    grid-gap: 40px;
+}
+
+.card{
+    grid-column-end: span 4;
+    display: flex;
+    flex-direction: column;/*Makes image flex up and down*/
+    background-color: #39393b;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;/*This is for the hover animation*/
+}
+
+.card:hover{
+    transform: translateY(-7px);/*THIS IS NOT WORKING*/
+}
+
+.card-image-container{
+    width:100%;
+    padding-top: 56.25%;/*9/16*100 - standard aspect ratio as a percent*/
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image-container img{
+    width:100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);/*This forces 19=6:9 aspect ratio for any images that aren't in that ratio*/
+}
+.text-medium{
+    font-family: 'Open Sans',sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #ecf0f1;
+}
+.card-content{
+    padding:20px;
+}
+.card-title{
+    margin-bottom: 20px;
+}
+.card-info{
+    display:flex;
+    align-self: end;/*Puts card-info at the bottom of the display grid*/
+    align-items: center;/*Ensure info is always centered alongside price*/
+}
+.card-price{
+    margin-left: auto;/*This will float price to the right of the card because we're using a flex display*/
+    padding: 5px 20px;
+    background-color: #303032;
+    border-radius: 20px;
+}
+@media screen and (max-width:670px){
+    header{
+        min-height: 300px;
+    }
+}
+@media only screen and (max-width:1000px){
+    .card{
+        grid-column-end: span 6;
+    }
+}
+@media only screen and (max-width:700px){
+    main{
+        grid-gap: 20px;
+    }
+    .card{
+        grid-column-end: span 12;
+    }
+}
+@media only screen and (max-width:500px){
+    main{
+        grid-template-columns:10px repeat(6, 1fr) 10px;
+        grid-gap: 10px;
+    }
+    .cards{
+        grid-column: 2/ span 6;
+        grid-template-columns: repeat(6,1fr);
+        grid-gap: 20px;
+    }
+    .card{
+        grid-column-end: span 6;
+    }
+}
