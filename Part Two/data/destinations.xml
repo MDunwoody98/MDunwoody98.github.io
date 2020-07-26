@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <Destination>
+        <name>Mariott Resort</name>
+        <image>media/resorts/fiji resort.jpg</image>
+        <price>£1399</price>
+        <country>Fiji</country>
+    </Destination>
+    <Destination>
+        <name>Four Seasons Resort</name>
+        <image>media/resorts/bora_bora.jpg</image>
+        <price>£1500</price>
+        <country>French Polynesia</country>
+    </Destination>
+    <Destination>
+        <name>Saint Regis Resort</name>
+        <image>media/resorts/saint regis bora bora.jpg</image>
+        <price>£1699</price>
+        <country>French Polynesia</country>
+    </Destination>
+    <Destination>
+        <name>Diamond Resort</name>
+        <image>media/resorts/diamond_hawaii.jpg</image>
+        <price>£999</price>
+        <country>Hawai'i</country>
+    </Destination>
+    <Destination>
+        <name>Ramada Resort, Wanaka</name>
+        <image>media/resorts/Ramada Resort Wanaka New Zealand.jpg</image>
+        <price>£1550</price>
+        <country>New Zealand</country>
+    </Destination>
+    <Destination>
+        <name>Scrub Island</name>
+        <image>media/resorts/Scrub Island UK Virgin Islands.jpg</image>
+        <price>£2099</price>
+        <country>UK Virgin Islands</country>
+    </Destination>
+    <Destination>
+        <name>Lily Beach Resort and Spa</name>
+        <image>media/resorts/Lily Beach Resort and Spa, Maldives.jpg</image>
+        <price>£2349</price>
+        <country>Maldives</country>
+    </Destination>
+    <Destination>
+        <name>Bvlgari Resort, Bali</name>
+        <image>media/resorts/Bvlgari Resort Bali.jpg</image>
+        <price>£8,800,000</price>
+        <country>Indonesia</country>
+    </Destination>
+    <Destination>
+        <name>Ko Lanta Resort</name>
+        <image>media/resorts/Ko Lanta Resort Thailand.jpg</image>
+        <price>£8,800,000</price>
+        <country>Thailand</country>
+    </Destination>
+</root>

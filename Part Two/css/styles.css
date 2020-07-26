@@ -65,6 +65,10 @@ main{
     Content will never exceed 1160px*/
 }
 
+section #cardElements{
+    display:none;
+}
+
 .cards{
     grid-column: 2 / span 12;
     display: grid;/*set on 'cards' so that card class can inherit a grid display*/
@@ -122,6 +126,9 @@ main{
     padding: 5px 20px;
     background-color: #303032;
     border-radius: 20px;
+}
+.container{
+    height: auto;
 }
 @media screen and (max-width:670px){
     header{
