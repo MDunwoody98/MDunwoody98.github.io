@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<header>
+
+</header>
+<body>
+    <h4>Calculate average of 4 marks</h4>
+    <br/<br/>
+    <p>
+        You must input numeric values between 0 and 100 for each mark
+    </p><br/>
+    <label for="name">Input the value of mark 1 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 2 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 3 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 4 </label><br/><input type="text" class="name"><br/>
+    <br/>
+    <input type="button" value="Calculate Average" onclick="calculateAverage()">
+    <p id="result"></p>
+</body>
+<footer>
+    <script>
+        function calculateAverage(){
+            var marks = document.getElementsByClassName("name");
+            var resultTag = document.getElementById("result");
+            var marksAsNumbers = [];
+            for (let i = 0; i < marks.length; i++) {
+                mark = marks[i].value;
+                if (parseFloat(mark) && mark >= 0 && mark <= 100 || mark ==0){
+                    marksAsNumbers.push(mark);
+                }
+            }
+            if (marksAsNumbers.length == 4) {
+                var count = 0;
+                marksAsNumbers.forEach(element => {
+                    count += parseFloat(element);
+                });
+                var average = count / 4;
+                resultTag.textContent = determineGrade(average);
+
+            } else {
+                resultTag.textContent = "";
+                alert("Please ensure you have input numeric values between 0 and 100 for all fields.");
+            }
+        }
+        function determineGrade(average){
+            var averageString;
+            var averageRange = parseInt(average /10);//Allows for easier processing by switch statement. 9 means in the 90s therefore A, 8 means in 80s therefore B, etc.
+            switch (averageRange){
+                case 10: averageString = "Outstanding! You got an A, your average mark is "+average; break;
+                case 9: averageString = "Outstanding! You got an A, your average mark is "+average; break;
+                case 8: averageString = "Very good! You got a B, your average mark is "+average; break;
+                case 7: averageString = "Fairly good! You got a C, your average mark is "+average; break;
+                case 6: averageString = "Doing okay! You got a D, your average mark is "+average; break;
+                default: averageString = "Need to work much harder! You got an E, failed, your average mark is "+average;
+            }
+            return averageString;
+        }
+    </script>
+</footer>

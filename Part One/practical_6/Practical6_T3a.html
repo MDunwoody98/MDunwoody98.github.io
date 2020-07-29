@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<header>
+
+</header>
+<body>
+    <h4>Calculate average of 4 marks</h4>
+    <br/<br/>
+    <p>
+        You must input numeric values between 0 and 100 for each mark
+    </p><br/>
+    <label for="name">Input the value of mark 1 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 2 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 3 </label><br/><input type="text" class="name"><br/>
+    <label for="name">Input the value of mark 4 </label><br/><input type="text" class="name"><br/>
+    <br/>
+    <input type="button" value="Calculate Average" onclick="calculateAverage()">
+    <p id="result"></p>
+</body>
+<footer>
+    <script>
+        function calculateAverage(){
+            var marks = document.getElementsByClassName("name");
+            var resultTag = document.getElementById("result");
+            var marksAsNumbers = [];
+            for (let i = 0; i < marks.length; i++) {
+                mark = marks[i].value;
+                if (parseFloat(mark) && mark >= 0 && mark <= 100){
+                    marksAsNumbers.push(mark);
+                }
+            }
+            if (marksAsNumbers.length == 4) {
+                var count = 0;
+                marksAsNumbers.forEach(element => {
+                    count += parseFloat(element);
+                });
+                var average = count / 4;
+                var averageString = "The average score is "+average;
+                resultTag.textContent = averageString;
+
+            } else {
+                resultTag.textContent = "";
+                alert("Please ensure you have input numeric values between 0 and 100 for all fields.");
+            }
+        }
+    </script>
+</footer>

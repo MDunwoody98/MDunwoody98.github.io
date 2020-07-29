@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+<body>
+    <label for="name">Input your name below </label><br/><input type="text" class="name" id="nameLocation"><br/>
+    <button onclick="displayName()">Display Name</button><br/>
+    <p id="display"></p>
+</body>
+<footer>
+    <script language=javascript type=text/javascript>
+    function displayName(){
+        var name = document.getElementById("nameLocation").value;
+        var ptag = document.getElementById('display');
+        if (name.length >0){
+            ptag.textContent = "Hello "+name+", welcome to my homepage";
+        }
+        else{
+            ptag.textContent = "Hello, welcome to my homepage";
+        }
+    }
+    </script>
+</footer>
