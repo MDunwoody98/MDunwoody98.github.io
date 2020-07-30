@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<header>
+
+</header>
+<body>
+    <h4>Customer Information:</h4>
+    <label for="firstName">First Name: </label><input type="text" id="firstName"><br/><br/>
+    <label for="secondName">Second Name: </label><input type="text" id="secondName"><br/><br/>
+    <label for="ageEntry">Age: </label><input type="text" id="ageEntry"><br/><br/>
+    <label for="maritalStatus">Marital Status: </label>
+    <select name="maritalStatus" id="maritalStatus">
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+    </select>
+    <br/><br/>
+    <input type="button" value="Calculate Insurance Class" onclick="calculateClass()">
+    <p id="displayInformation"></p>
+</body>
+<footer>
+    <script>
+        function calculateClass(){
+            var firstName = document.getElementById("firstName").value;
+            var secondName = document.getElementById("secondName").value;
+            var age = document.getElementById("ageEntry").value;
+            var maritalStatus = document.getElementById("maritalStatus").value;
+            
+            var insuranceClass;
+            if (age >= 30 && maritalStatus == "married"){
+                insuranceClass = "class 1";
+            }
+            if (age >= 30 && maritalStatus == "single"){
+                insuranceClass = "class 2";
+            }
+            if (age < 30 && maritalStatus == "married"){
+                insuranceClass = "class 3";
+            }
+            if (age < 30 && maritalStatus == "single"){
+                insuranceClass = "class 4";
+            }
+            var pTag = document.getElementById("displayInformation");
+            pTag.textContent = firstName +" "+ secondName+", your insurance classification level is "+insuranceClass;
+        }
+    </script>
+</footer>

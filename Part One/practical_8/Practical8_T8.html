@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <header>
+
+    </header>
+    <body>
+        <form id="userSurvey" name="userSurvey" onsubmit="validChoice()">
+            <h2>User Survey</h2>
+            <hr/>
+            <h4>User Information:</h4>
+            <p>Please enter your details below:</p>
+            <label for="userName">Name:<br/>(required)</label><input type="text" id="userName" name="userName"><br/>
+            <label for="emailEntry">Email:<br/>(required) </label><input type="text" id="emailEntry" name="eMail"><br/>
+            <label for="phone">Phone:<br/>(required) </label><input type="text" id="phone" name="phone" ><br/>
+            <hr/>
+            <p>Please choose your favourite types of books.(check all that apply)</p>
+            <input type="checkbox" value="Science Fiction" id="bookChoice0" checked><label for="bookChoice0">Science Fiction</label>
+            <input type="checkbox" value="Travel Guide" id="bookChoice1"><label for="bookChoice1">Travel Guide</label>
+            <input type="checkbox" value="Short Story Collection" id="bookChoice2"><label for="bookChoice2">Short Story Collection</label>
+            <input type="checkbox" value="Other" id="bookChoice3"><label for="bookChoice3">Other</label>
+            <p>Other comments:</p>
+            <textarea cols="47" rows="10"></textarea>
+            <br/><br/>
+            <input type="submit" value="Submit"> <input type="button" value="Reset Form">
+        </form>
+    </body>
+    <footer>
+        <script language=javascript type=text/javascript src="js/Practical8_T7.js">
+        </script>
+    </footer>
+</html>

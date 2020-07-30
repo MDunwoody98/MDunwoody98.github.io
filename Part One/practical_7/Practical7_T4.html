@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<header>
+
+</header>
+<body>
+    <h4>Customer Information:</h4>
+    <label for="firstName">First Name: </label><input type="text" id="firstName"><br/><br/>
+    <label for="secondName">Second Name: </label><input type="text" id="secondName"><br/><br/>
+    <label for="ageEntry">Age: </label><input type="text" id="ageEntry"><br/><br/>
+    <label for="maritalStatus">Marital Status: </label>
+    <select name="maritalStatus" id="maritalStatus">
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+    </select>
+    <br/><br/>
+    <input type="button" value="Calculate Insurance Class" onclick="calculateClass()">
+    <p id="displayInformation"></p>
+</body>
+<footer>
+    <script>
+        function calculateClass(){
+            var firstName = document.getElementById("firstName").value;
+            var secondName = document.getElementById("secondName").value;
+            var age = document.getElementById("ageEntry").value;
+            var maritalStatus = document.getElementById("maritalStatus").value;
+            var insuranceClass;//declare all the values from the html we need
+            var regex = /^[a-zA-Z ]{2,30}$/;//Regex to validate name is between 2 and 30 chars
+            var pTag = document.getElementById("displayInformation");
+
+            if (!parseInt(age) || age < 17) {
+                alert("Please enter a valid age that is numeric and greater than 16.")
+                pTag.textContent = "";
+            }
+            else if(!(regex.test(firstName) && regex.test(secondName))){
+                alert("Please enter a valid first name and second name that contains only text and is between 2 and 30 characters long.")
+                pTag.textContent = "";
+            }//next else will be hit only if validations pass
+            else {
+                if (age >= 30 && maritalStatus == "married"){
+                    insuranceClass = "class 1";
+                }
+                if (age >= 30 && maritalStatus == "single"){
+                    insuranceClass = "class 2";
+                }
+                if (age < 30 && maritalStatus == "married"){
+                    insuranceClass = "class 3";
+                }
+                if (age < 30 && maritalStatus == "single"){
+                    insuranceClass = "class 4";
+                }
+                pTag.textContent = firstName +" "+ secondName+", your insurance classification level is "+insuranceClass;
+            }
+        }
+    </script>
+</footer>

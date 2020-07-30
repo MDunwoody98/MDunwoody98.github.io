@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>multiplication table</title>
+  </head>
+  <body>
+    <table border="3" cellpadding="6">
+      <script language="javascript">
+        for (j = 1; j <= 3; j++) {
+          document.write("<tr>");
+          for (i = 1; i <= 5; i++) {
+            document.write('<td align="right">', i * j, "</td>");
+          }
+          document.write("</tr>\n");
+        }
+      </script>
+    </table>
+  </body>
+</html>

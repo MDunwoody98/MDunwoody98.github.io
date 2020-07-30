@@ -40,3 +40,6 @@ h2 {
   table {
     width: 100%;
   }
+  #task7ExampleTable tr td{
+    text-align: right;
+  }

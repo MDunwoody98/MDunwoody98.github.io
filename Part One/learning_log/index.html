@@ -161,6 +161,115 @@
     <button type="button" class="collapsible">Week 7</button>
     <div class="content">
         <p class="emphasis">Task One</p>
+        <p>
+            For task one I was given <a href="Part One/practical_7/Practical7_T1.html">this</a> HTML file and tasked with explaining what it outputs which I will endeavour to below:
+            <p>
+                This will have a browser tab title of "multiplication table" and the body of the webpage will display a table with a boarder of 3px and a cellpadding of 6px.<br/>
+                In this table, there is a nested for loop. The outer loop will declare a table row and this will happen for 3 iterations. On each of these iterations, the inner 
+                loop will run 5 times creating a column in the row, multiplying i (iteration number of outer loop) with j (iteration counter of inner loop). This generated cell will have its value right aligned<br/>
+                Since the inner loop runs 3 times, and creates 5 cells upon each run due to the inner loop, the final table will have 15 cells in 3 rows of 5. The values will be as follows:
+            </p>
+            <table border="3" cellpadding="6" id="task7ExampleTable">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>6</td>
+                    <td>9</td>
+                    <td>12</td>
+                    <td>15</td>
+                </tr>
+            </table>
+            <br/>
+            <p class="emphasis">Task Two</p>
+            <p>
+                For task 2 I was tasked with creating a web page for car insurance candidate classification. visitors must input their first name, surname, age, and marital status.
+                The webpage will provide information on the user's insurance class. This site can be found <a href="Part One/practical_7/Practical7_T2.html">here.</a>
+            </p>
+            <p>
+                For task 3, I added validation to this webpage. Now, candidates must have reasonable names adhering to a regex, and must have an age that is numeric and greater than or equal to 17.
+                The webpage for task 3 can be found <a href="Part One/practical_7/Practical7_T2.html">here.</a>
+            </p>
+        </p>
+    </div>
+    <button type="button" class="collapsible">Week 8</button>
+    <div class="content">
+        <p class="emphasis">Week 8</p>
+        <p>
+            For week 8 I wrote a webpage that provides an online survey for a user's favourite book genre. The initial HTML task can be found <a href="Part One/practical_8/Practical8_T1.html">here.</a>
+        </p>
+        <p>
+            Following this, I added an onSubmit function to the form to validate the name upon entry. This will be executed when the submit button is clicked and will alert the user whenever their name does not meet requirements.
+            <a href="Part One/practical_8/Practical8_T2.html">Link to task 2.</a>
+        </p>
+        <p>
+            My next task was to <a href="Part One/practical_8/js/Practical8_T3.js">analyse this script</a> and break down what is happening statement by statement. This I will do below:
+            <ol>
+                <li>Upon function invocation, the document checks whether there is a value for phone number. If there is no value, the user is alerted and the method returns false and the cursor is focused on the phone text element</li>
+                <li>If there is a value, empty variables are declared to store the numbers and characters, and a variable phoneNo is declared to take the value of the form input</li>
+                <li>Next, it iterates through every character in phoneNo and if the character is a value between 0 and 9, i.e. numeric, it gets added to the variable <i>numbersOnly</i></li>
+                <li>Following this, <i>numbersOnly</i> should be a string composed of numeric values. Next is a check to see if it is 13 characters long. 
+                    If not, an error is thrown and the user is alerted and the function returns false. The cursor is focused on the phone text element.</li>
+                <li>Now we have a 13 character string composed of numbers only. We make use of substring functions to break this phone number down
+                    into its components. These are the 2-digit area code, followed by the leading 0, 2-digit exchange, 4-digit extension 1 and 4-digit extension 2.</li>
+                <li>A new number is then created which formats the phone in the form +## (#)## ####-####</li>
+                <li>The script then sets this newNumber to be the value in the phone text element. Due to how HTML handles form submissions, 
+                    this is immediately cleared upon clicking submit so I added a console log at the bottom to confirm it works.</li>
+            </ol>
+        </p>
+        <p>Following this, I implmeneted the script in my previous HTML document so instead of checking for valid names, it checked the validNo method described above.
+            I had to make changes to my existing solution as I was using id attributes instead of name attributes, so the <i>document.userSurvey.phone.value</i> call returned undefined.
+            <a href="Part One/practical_8/Practical8_T4.html">Link to task 4.</a>
+        </p>
+        <p>
+            Task 5 was to explain the workings of <a href="Part One/practical_8/js/Practical8_T5.js">this validateEmail function.</a> This is as below:
+            <ol>
+                <li>Upon function invocation, the document checks whether there is a value for eMail. If there is no value, the user is alerted and the method returns false and the cursor is focused on the eMail text element</li>
+                <li>If there is a value for email address, variable atLoc is declared to be the index of the '@' symbol in the email string, as long as it is not the first character.</li>
+                <li>Variable dotLoc is declared to be the index of the '.' character, as long as that character's position is at least 2 characters greater than that of atLoc</li>
+                <li>Variable len is declared to be the length of the email address</li>
+                <li>Email address is considered to be valid if atLoc and dotLoc are greater than 0, and if len is greater than dotLoc+2. i.e. the length of the email is greater than dotLoc with one appended character.
+                    In other words, at least 2 characters must exist after the dot.
+                </li>
+                <li>
+                    If this is false, the user is alerted that the email is invalid and told to enter again. The document focuses on the email text element and the method returns false.
+                </li>
+            </ol>
+            <p>For task 6, I attached validateEmail to the onSubmit method. This can be found <a href="Part One/practical_8/Practical8_T6.html">here.</a></p>
+        </p>
+        <p>
+            Task 7 was to explain the functionality within <a href="Part One/practical_8/js/Practical8_T7.js">this validateChoice function.</a> This is as below:
+            <ol>
+                <li>Upon invocation, the function declares 2 empty variables called bookChoice and x.</li>
+                <li>the function iterates through all checkboxes to see if they're checked, and if they are checked, variable x contains the book choice and a newline</li>
+                <li>If bookChoice is empty, i.e. no checkboxes have overwritten the initial empty string, return false and alert the user that they must select at least one book category</li>
+                <li>Otherwise, get the user's name, email, and phone, and populate the textarea with these values. Return true</li>
+            </ol>
+        </p>
+        <p>
+            For task 8 I linked this validateChoice to my HTML page. I also included an event handler so that the submit button no longer cleared all entered text on click.
+            <a href="Part One/practical_8/Practical8_T8.html">This can be accessed here.</a>
+        </p>
+        <p>
+            Finally, for part 9 I combined all these validation functions and applied them all at once to my HTML. This final, fully-validated form can be found
+            <a href="Part One/practical_8/Practical8_T9.html">here.</a>
+        </p>
+    </div>
+    <button type="button" class="collapsible">Week 9</button>
+    <div class="content">
+        <p class="emphasis">Week 9</p>
     </div>
 </body>
 <footer>
