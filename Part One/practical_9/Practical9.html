@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<header></header>
+<body>
+    <form name="myQuizForm">
+        <h1>Online Quiz on XHTML</h1>
+        <br/>
+        <h4>Question 1: What does XHTML stand for?</h4>
+        <select id="select1">
+            <option value="EXtreme HyperText Markup Language">EXtreme HyperText Markup Language</option>
+            <option value="EXtensible HyperText Marking Language">EXtensible HyperText Marking Language</option>
+            <option value="EXtensible HyperText Markup Language">EXtensible HyperText Markup Language</option>
+            <option value="EXtra Hyperlinks and Text Markup Language">EXtra Hyperlinks and Text Markup Language</option>
+        </select>
+        <h4>Question 2: What is the correct XHTML for a paragraph?</h4>
+        <select id="select2">
+            <option value="&lt;/p&gt;&lt;p&gt;">&lt;/p&gt;&lt;p&gt;</option>
+            <option value="&lt;p&gt;&lt;/p&gt;">&lt;p&gt;&lt;/p&gt;</option>
+            <option value="&lt;P&gt;&lt;/p&gt;">&lt;P&gt;&lt;/p&gt;</option>
+            <option value="&lt;P&gt;&lt;/P&gt;">&lt;P&gt;&lt;/P&gt;</option>
+        </select>
+        <h4>Question 3: What is correct XHTML for a line break?</h4>
+        <select id="select3">
+            <option value="&lt;break/&gt;">&lt;break/&gt;</option>
+            <option value="&lt;br /&gt;">&lt;br /&gt;</option>
+            <option value="&lt;br&gt;">&lt;br&gt;</option>
+        </select>
+        <hr/>
+        <input type="button" value="Check Answers" onclick="generateResults()">
+        <br/><br/>
+        <p style="display:inline;">Your score is: </p>
+        <input type="text" id="results" readonly>
+    </form>
+</body>
+<footer>
+    <script src="js/Practical9.js"></script>
+</footer>
