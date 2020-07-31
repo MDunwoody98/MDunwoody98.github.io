@@ -1,2 +1,31 @@
-<!--Rollover links-->
-<!--Draw DOM-->
+<!DOCTYPE html>
+
+<head>
+    <title>Image swap</title>
+</head>
+
+<body bgColor="white">
+    <a href='#' onmouseover='document.photo.src="../media/IMAGE_0.jpg"' onmouseout='document.photo.src="../media/IMAGE_1.jpg"''>
+        <img src="../media/IMAGE_1.jpg" width="1024" height="1024" name="photo" border="0"> </img>
+    </a>
+    <p onmouseover="changeBackGround(this.style.backgroundColor)" 
+    onmouseout="changeBackGround('transparent')" style="background-color:aqua">
+    Hover here to make the background aqua
+</p>
+    <p onmouseover="changeBackGround(this.style.backgroundColor)" 
+        onmouseout="changeBackGround('transparent')" style="background-color:grey">
+        Hover here to make the background grey
+    </p>
+    <p onmouseover="changeBackGround(this.style.backgroundColor)" 
+        onmouseout="changeBackGround('transparent')" style="background-color: #e0f542">
+        Hover here to make the background #e0f542
+    </p>
+</body>
+<footer>
+    <script>
+        function changeBackGround(colour) {
+          document.body.style.background = colour;
+        }
+    </script>
+</footer>
+</html>

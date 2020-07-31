@@ -41,7 +41,16 @@
         <p style="color:red">Rollover links & bold blue lines from practical 2</p>
         <a href="Part One/practical_2/practical2.html">Mouseover site</a><br />
         <a href="Part One/media/Practical 2 DOM.pdf">DOM Diagram</a>
-
+        <p>Task 3 was to explain the bold and blue lines in the HTML file. I will do this below:</p>
+        <p>
+            This HTML declares an anchor tag with an empty href, and an onmouseover event that changes the src attribute of an element named photo to image 1.
+            It has an onmouseout event that changs it back to image0. An image tag below is declared with no border, a fixed height and width,
+            and its src is set to photo 0. So the image will only be different during mouseover. The anchor tag is then closed.
+        </p>
+        <p>
+            Next, I added 3 rollover links that allowed the user to change the background colour. This was accomplished using HTML and CSS events
+            and can be found <a href="Part One/practical_2/practical2_T2.html">here.</a>
+        </p>
     </div>
     <button type="button" class="collapsible">Week 3</button>
     <div class="content">
@@ -290,7 +299,6 @@
             a set of images, as required by task1, it displays them as a slideshow, as required by task 2, and it used a setTimeout method as required by task 3. 
             In order to get the setTimeout to work I had to declare the method as asynchronous, and I ran into issues when I tried to combine the onmouseover event with
             a click event, which was solved with a simple JQuery method to bind a click event to all images on document load. This seemed more efficient than a vanilla JS solution.
-            
         </p>
     </div>
 </body>
