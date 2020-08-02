@@ -35,10 +35,10 @@ nav .badge{
     padding-top: 4vw;
 }
 .tabs .indicator{
-    background-color:navy;
+    background-color:aquamarine;
 }
 .tabs .tab a:focus, .tabs .tab a:focus.active{
-    background: ghostwhite;
+    background: #fafaff;
 }
 .logoContainer{
     position: absolute;
@@ -86,7 +86,7 @@ section #cardElements{
 }
 
 .card:hover{
-    transform: translateY(-7px);/*THIS IS NOT WORKING*/
+    transform: translateY(-7px);
 }
 
 .card-image-container{
@@ -120,9 +120,10 @@ section #cardElements{
     display:flex;
     align-self: end;/*Puts card-info at the bottom of the display grid*/
     align-items: center;/*Ensure info is always centered alongside price*/
+    width: auto;
 }
 .card-price{
-    margin-left: auto;/*This will float price to the right of the card because we're using a flex display*/
+    margin-left: auto !important;/*This will float price to the right of the card because we're using a flex display - took ages to verify but needs '!important' attribute to work*/
     padding: 5px 20px;
     background-color: #303032;
     border-radius: 20px;
