@@ -25,10 +25,9 @@
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#photos">Photos</a></li>
-                    <li><a href="#offerings">What we Offer</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#loginForm">Log in</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                     <li><a href="#" class="btn-floating transparent darken-4 z-depth-0">
                             <i class="material-icons">notifications</i>
                         </a></li>
@@ -38,10 +37,9 @@
         </nav>
         <ul class="sidenav" id="mobile-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#photos">Photos</a></li>
-            <li><a href="#offerings">What we Offer</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#loginForm">Log in</a></li>
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
         <div class="logoContainer">
             <h2>Thomas Nook</h2>
@@ -49,8 +47,10 @@
         </div>
         
     </header>
+    <br/>
+    <h4 class="container blue-grey-text text-darken"id="cardHeader">Our most popular destinations</h4>
     <main>
-        <section class="cards">
+        <section class="cards scrollspy" id="destinations">
             <div id="cardElements"></div>
         </section>
     </main>
@@ -87,8 +87,8 @@
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">description</i>
-                            <textarea id="message" class="materialize-textarea"></textarea>
-                            <label for="message">Your name</label>
+                            <textarea id="nameInput" class="materialize-textarea"></textarea>
+                            <label for="nameInput">Your name</label>
                         </div>
                         <div class="input-field">
                                 <i class="material-icons prefix">calendar_today</i>
@@ -104,7 +104,7 @@
                             </p>
                         </div>
                         <div class="input-field right">
-                            <button class= "blue-grey btn waves-effect waves-light">Submit</button>
+                            <button class= "blue-grey btn waves-effect waves-light" id="createSubmit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -122,7 +122,7 @@
                             <label for="loginPassword">Password</label>
                         </div>
                         <div class="input-field right">
-                            <button class= "blue-grey btn waves-effect waves-light">Submit</button>
+                            <button class= "blue-grey btn waves-effect waves-light" id="logInSubmit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -130,13 +130,13 @@
         </div>
         <br/><br/>
     </section>
-    <footer class="page-footer grey darken-3">
+    <footer class="page-footer grey darken-3 scrollspy" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col s12 l6">
-                    <h5>About me</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh praesent tristique magna sit amet purus gravida.</p>
+                    <h5>About us</h5>
+                    <p>Thomas Nook endeavour to provide top quality customer service. If any of our dream vacation packages don't meet your expectations, let us know by messaging us on one of our social media pages.</p>
+                    <p>Alternatively, send us an email at notreal@ThomasNook.com. We are always happy to hear from you, our valued customers </p>
                 </div>
                 <div class="col s12 l4 offset-l2">
                     <h5>Connect with us</h5><p></p>

@@ -3,9 +3,7 @@ $(document).ready(function(){
     $('.modal').modal();
     $('.materialboxed').materialbox();
     $('.tabs').tabs();
-    $('.datepicker').datepicker({
-        disableWeekends: true,
-    });
+    $('.datepicker').datepicker();
     $('.tooltipped').tooltip();
     $('.scrollspy').scrollSpy();
     $('.parallax').parallax();
@@ -21,13 +19,15 @@ $(document).ready(function(){
             $('nav').addClass('lighten-2');
         }
     });
-    $('.emailIcon').click(function($e) {
+    $('#logInSubmit').click(function($e) {
         $e.preventDefault();
-        M.toast({html: 'Email client opened!',classes: 'indigo darken-4 rounded'});
+        toastMessage = validateLogIn();
+        M.toast({html: toastMessage,classes: 'blue-grey rounded'});
     });
-    $('button').click(function($e) {
+    $('#createSubmit').click(function($e) {
         $e.preventDefault();
-        M.toast({html: 'Message sent',classes: 'indigo darken-4 rounded'});
+        toastMessage = validateCreateAccount();
+        M.toast({html: toastMessage,classes: 'blue-grey rounded'});
     });
     $('.halfway-fab').click(function($e) {
         $e.preventDefault();
@@ -76,13 +76,12 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
     var cardContainer = cardElements.parentNode;
     var newCard, newCardContent, secondPTag, thirdPTag, newCardInfo, newCardImage, i,j,xmlNodeCount,cardID,nameNode,image,imageNode,price,country;
     xmlNodeCount = xmlNodes.length;
-    console.log("Number of nodes: "+ xmlNodeCount);
     for (i=0;i<xmlNodeCount;i++){
         newCard = document.createElement("div");//For each XML subnode of 'root', create a card element
         newCard.classList.add("card");
         for(j=0;j<xmlNodes[i].childNodes.length;j++){
-            console.log(xmlNodes[i].childNodes[j].nodeName); //Log to check to see that nodes are coming through as expected
-            console.log(xmlNodes[i].childNodes[j].firstChild.nodeValue); //Log to check to see that node values are coming through as expected
+            //console.log(xmlNodes[i].childNodes[j].nodeName); //Log to check to see that nodes are coming through as expected
+            //console.log(xmlNodes[i].childNodes[j].firstChild.nodeValue); //Log to check to see that node values are coming through as expected
             if (xmlNodes[i].childNodes[j].nodeName =="image"){
                 newCardImage = document.createElement("div");
                 newCardImage.classList.add("card-image-container");
@@ -131,4 +130,72 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
         newCard.id=cardID;
         cardContainer.appendChild(newCard);
     }
+}
+function validateLogIn(){
+    var email = document.getElementById("loginEmail").value;
+    var password = document.getElementById("loginPassword").value;
+    if (!validEmail(email))
+        return "Please enter a valid email address";
+    if (userExists(email, password))
+        return "You have successfully logged in"
+    return "Error. Email and Password do not match";//Don't check if the email exists as that can be used by hackers for enumeration
+}
+
+function validateCreateAccount(){
+    var email = document.getElementById("createEmail").value;
+    var password = document.getElementById("createPassword").value;
+    var name = document.getElementById("nameInput").value;
+    var dateOfBirth = new Date(document.getElementById("dateOfBirth").value);
+    
+    if (!validEmail(email))
+        return "Error. Please enter a valid email address";
+    if (!validPassword(password))
+        return "Error. Please enter a valid password";
+    if  (!validName(name))
+        return "Error. Please enter a valid name that contains only text and is between 2 and 30 characters long";
+    if (validDoB(dateOfBirth))
+        return "Error. You must be 18 or over to create an account with us";
+    if (userExists(email))
+        return "Error. This email address is already in use"
+
+    createAccount(email, password, name);//Only executes if prior conditions did not stop processing
+    return "Account created successfully";
+}
+
+function validEmail(emailAddress) {//function stolen from practical 8 to validate email addresses
+    var atLoc = emailAddress.indexOf("@", 1);
+    var dotLoc = emailAddress.indexOf(".", atLoc + 2);
+    var len = emailAddress.length;
+    if (atLoc > 0 && dotLoc > 0 && len > dotLoc + 2)
+        return true;
+    return false;
+}
+
+function validName(name){
+    var regex = /^[a-zA-Z ]{2,30}$/;//Regex to validate name is between 2 and 30 chars.
+    return regex.test(name);
+}
+
+function validPassword(password){
+    var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,60}$/;
+    return regex.test(password);
+}
+
+function validDoB(dateOfBirth){//dateOfBirth is a date
+    console.log(dateOfBirth);
+    var ageDifference = Date.now() - dateOfBirth.getTime();
+    console.log(new Date(ageDifference));
+    
+}
+
+function userExists(email, password){
+    return true;
+}
+
+function userExists(email){
+    return true;
+}
+
+function isDate18orMoreYearsOld(day, month, year) {
+    return new Date(year+18, month-1, day) <= new Date();
 }

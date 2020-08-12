@@ -56,6 +56,9 @@ nav .badge{
     font-size: 24pt;
     font-style: italic;
 }
+#cardHeader{
+    text-align: center;
+}
 main{
     display: grid;/*Declare grid display*/
     grid-template-columns: 1fr repeat(12, minmax(auto,60px)) 1fr;/*1fr is a calculated unit for equally sized columns*/
