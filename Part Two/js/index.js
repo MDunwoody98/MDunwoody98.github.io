@@ -11,9 +11,7 @@ $(document).ready(function(){
         defaultDate: startDate,
         maxDate: startDate//Validation to ensure users cannot pick ages under 18 years
     });
-    $('.tooltipped').tooltip();
     $('.scrollspy').scrollSpy();
-    $('.parallax').parallax();
     /*The below click functions and their toasts represent a client-side spoofing of a log-in system.
     The logic is fully validated and will produce the correct response depending on the values provided for each field */
     $('#logInSubmit').click(function($e) {
@@ -28,15 +26,6 @@ $(document).ready(function(){
             M.toast({html: toastMessage,classes: 'blue-grey rounded'});
         });
     });
-    $('.halfway-fab').click(function($e) {
-        $e.preventDefault();
-        var toastHTML = '<span>Meal successfully added to favourites</span><button class="btn-flat toast-action">Undo</button>';
-        M.toast({html: toastHTML,classes: 'indigo darken-4 rounded'});
-    });
-    $('.moreDetails').click(function($e){
-        $e.preventDefault();
-        M.toast({html: 'Detail pop up',classes: 'indigo darken-4 rounded'});
-    })
 });
 
 window.addEventListener("load", function() {
