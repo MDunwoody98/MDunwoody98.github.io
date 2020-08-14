@@ -3,31 +3,30 @@ $(document).ready(function(){
     $('.modal').modal();
     $('.materialboxed').materialbox();
     $('.tabs').tabs();
-    $('.datepicker').datepicker();
+    $('.slider').slider();
+    var today = new Date();
+    var startDate = new Date(today.setFullYear(today.getFullYear()-18));
+    $('.datepicker').datepicker({
+        autoClose: true,
+        defaultDate: startDate,
+        maxDate: startDate//Validation to ensure users cannot pick ages under 18 years
+    });
     $('.tooltipped').tooltip();
     $('.scrollspy').scrollSpy();
     $('.parallax').parallax();
-    $(window).scroll(function(){
-        if($(window).scrollTop()>650){
-            $('nav').removeClass('transparent');
-            $('nav').addClass('blue');
-            $('nav').addClass('lighten-2');
-        }
-        else{
-            $('nav').removeClass('blue');
-            $('nav').addClass('transparent');
-            $('nav').addClass('lighten-2');
-        }
-    });
+    /*The below click functions and their toasts represent a client-side spoofing of a log-in system.
+    The logic is fully validated and will produce the correct response depending on the values provided for each field */
     $('#logInSubmit').click(function($e) {
         $e.preventDefault();
-        toastMessage = validateLogIn();
-        M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+        loginWrapper().then(function(toastMessage){
+            M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+        });
     });
     $('#createSubmit').click(function($e) {
         $e.preventDefault();
-        toastMessage = validateCreateAccount();
-        M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+        createAccountWrapper().then(function(toastMessage){
+            M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+        });
     });
     $('.halfway-fab').click(function($e) {
         $e.preventDefault();
@@ -131,35 +130,88 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
         cardContainer.appendChild(newCard);
     }
 }
-function validateLogIn(){
+
+async function loginWrapper(){
     var email = document.getElementById("loginEmail").value;
     var password = document.getElementById("loginPassword").value;
-    if (!validEmail(email))
-        return "Please enter a valid email address";
-    if (userExists(email, password))
-        return "You have successfully logged in"
-    return "Error. Email and Password do not match";//Don't check if the email exists as that can be used by hackers for enumeration
+    let toastMessage = validateLogIn(email, password);
+    console.log("Wrapper "+toastMessage);
+    return Promise.resolve(toastMessage);
 }
 
-function validateCreateAccount(){
+async function validateLogIn(email, password){
+    var toastMessage = "";
+    if (!validEmail(email)){//if email is not valid perform that check first
+        toastMessage = "Please enter a valid email address";
+    }
+    else{
+        var userAlreadyExists = await userExists(email, password);//if user already exists i.e. user/pass is valid
+        if (userAlreadyExists){
+            toastMessage = "You have successfully logged in";
+        }
+        else{
+            toastMessage = "Error. Email and Password do not match";//Don't check if the email exists as that can be used by hackers for enumeration
+        }
+    }
+    return toastMessage;
+}
+
+async function userExists(email, password){
+    var validCredentials = false;
+    let xmlhttp = await readUserFile(true);//asynchronous processing for improved performance
+    var userNodes = xmlhttp.getElementsByTagName("user");//Get each user node
+    userNodeCount = userNodes.length;
+    for (i=0;i<userNodeCount;i++){
+        for(j=0;j<userNodes[i].childNodes.length;j++){//for each child node of each user node
+            if (userNodes[i].childNodes[j].nodeName =="emailAddress"){//if email address is the name of the node, add to an array
+                if (userNodes[i].childNodes[j].firstChild.nodeValue == email && userNodes[i].childNodes[j+2].firstChild.nodeValue == password) {
+                    validCredentials = true;
+                }
+            }
+        }
+    }
+    return validCredentials;
+}
+
+async function createAccountWrapper(){
+    const toastMessage = await validateCreateAccount();
+    console.log("Wrapper "+toastMessage);
+    return Promise.resolve(toastMessage);
+}
+
+async function validateCreateAccount(){
     var email = document.getElementById("createEmail").value;
     var password = document.getElementById("createPassword").value;
     var name = document.getElementById("nameInput").value;
     var dateOfBirth = new Date(document.getElementById("dateOfBirth").value);
+    var confirmationCheckboxChecked = document.getElementById("confirmationCheckbox").checked;
+    var year = dateOfBirth.getFullYear();
+    var day = dateOfBirth.getDate();
+    var month = dateOfBirth.getMonth();
     
     if (!validEmail(email))
-        return "Error. Please enter a valid email address";
-    if (!validPassword(password))
-        return "Error. Please enter a valid password";
-    if  (!validName(name))
-        return "Error. Please enter a valid name that contains only text and is between 2 and 30 characters long";
-    if (validDoB(dateOfBirth))
-        return "Error. You must be 18 or over to create an account with us";
-    if (userExists(email))
-        return "Error. This email address is already in use"
-
-    createAccount(email, password, name);//Only executes if prior conditions did not stop processing
-    return "Account created successfully";
+        toastMessage = "Error. Please enter a valid email address";//validate user
+    else if (!validPassword(password))
+        toastMessage = "Error. Please enter a valid password";//validate pw
+    else if  (!validName(name))
+        toastMessage = "Error. Please enter a valid name that contains only text and is between 2 and 30 characters long";//validate name
+    else if (!validDoB(year, month, day))
+        toastMessage = "Error. You must be 18 or over to create an account with us";//validate DoB
+    else if (!confirmationCheckboxChecked)
+        toastMessage = "Please check to confirm your details are correct";
+    else {
+        let emailAlreadyTaken = await emailInUse(email);
+        console.log(emailAlreadyTaken);
+        if (!emailAlreadyTaken){//if email is not taken, we create account
+            createAccount(email, password, name);
+            toastMessage = "Account created successfully";   
+        }
+        else {
+            toastMessage = "Error. Email address is already in use";//email is taken
+        } 
+    }
+    
+    return toastMessage;
 }
 
 function validEmail(emailAddress) {//function stolen from practical 8 to validate email addresses
@@ -177,25 +229,72 @@ function validName(name){
 }
 
 function validPassword(password){
-    var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,60}$/;
+    var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,60}$/;//6-60 chars, at least one upp case, number, and special char
     return regex.test(password);
 }
 
-function validDoB(dateOfBirth){//dateOfBirth is a date
-    console.log(dateOfBirth);
-    var ageDifference = Date.now() - dateOfBirth.getTime();
-    console.log(new Date(ageDifference));
-    
+function validDoB(year, month, day){//dateOfBirth is a date
+    return new Date(year+18, month, day) <= new Date();//True if user is over 18
 }
 
-function userExists(email, password){
-    return true;
+async function readUserFile(read){
+    var xmlhttp = new XMLHttpRequest();//Retrieve XML data. Need to use AJAX library to do this, but avoiding JQuery
+    return new Promise(function(resolve){
+        xmlhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
+                    if (read)
+                        resolve(xmlhttp.responseXML.documentElement);//We cannot return data in an async function so we must resolve
+                    else resolve(xmlhttp.responseXML);
+                }
+            }//using a Promise so that the return value is not undefined, as it needs time to read the file
+        xmlhttp.open("get","data/users.xml",true);
+        xmlhttp.send(null);
+    });
 }
 
-function userExists(email){
-    return true;
+async function emailInUse(email){
+    var emailList = [];
+    let xmlhttp = await readUserFile(true);//asynchronous processing for improved performance
+    var userNodes = xmlhttp.getElementsByTagName("user");//Get each user node
+    userNodeCount = userNodes.length;
+    for (i=0;i<userNodeCount;i++){
+        for(j=0;j<userNodes[i].childNodes.length;j++){//for each child node of each user node
+            if (userNodes[i].childNodes[j].nodeName =="emailAddress"){//if email address is the name of the node, add to an array
+                emailList.push(userNodes[i].childNodes[j].firstChild.nodeValue);
+            }
+        }
+    }
+    return emailList.includes(email);
 }
 
-function isDate18orMoreYearsOld(day, month, year) {
-    return new Date(year+18, month-1, day) <= new Date();
+async function createAccount(email, password, name){
+    let xmlhttp = await readUserFile(false);
+    console.log(xmlhttp);
+    var newUserNode = xmlhttp.createElement("user");
+
+    var newEmailNode = xmlhttp.createElement("emailAddress");//create email XML node
+    var newEmailTextNode = document.createTextNode(email);
+    newEmailNode.appendChild(newEmailTextNode);
+
+    var newPasswordNode = xmlhttp.createElement("password");//create password XML node
+    var newPasswordTextNode = document.createTextNode(password);
+    newPasswordNode.appendChild(newPasswordTextNode);
+
+    var newNameNode = xmlhttp.createElement("name");//create name xml node
+    var newNameTextNode = document.createTextNode(name);
+    newNameNode.appendChild(newNameTextNode);
+
+    newUserNode.appendChild(newEmailNode);//append all these nodes to be children of user node
+    newUserNode.appendChild(newPasswordNode);
+    newUserNode.appendChild(newNameNode);
+    var data = xmlhttp.getElementsByTagName("data")[0];//get whole XML file
+    console.log(data);
+    /*
+        JavaScript in browser does not allow writing to file system for security reasons (rightly so), so this code here
+        is a demonstration of how a server-side XML database would be updated by the existing logic. If we had permissions to add
+        the new user nodes to the files on the server, the above console log shows how the logic exists and is working.
+
+        This is meant to be a demonstration/spoof of a live XML back end while keeping all logic client-side. It is for demonstration
+        purposes only and is not meant to represent ideal security, which would be server side.
+    */
 }

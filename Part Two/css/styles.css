@@ -7,17 +7,11 @@ body {
     background-color: #F0FFFF;/*Found this colour 'Azure' and really like it for the look of the site*/
 }
 #icon {
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
 }
 .container {
     width: 100vw;
     height: 100vh;
-}
-header{
-    background: url(../media/wholeisland2.jpg);
-    background-size: cover;
-    background-position: center;
-    min-height:700px;
 }
 nav {
     position:fixed;
@@ -40,20 +34,12 @@ nav .badge{
 .tabs .tab a:focus, .tabs .tab a:focus.active{
     background: #fafaff;
 }
-.logoContainer{
-    position: absolute;
-  top: 13%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color:white;
-  text-shadow: 1px 1px #000000;
-}
-.logoContainer h2{
+#logo{
     font-size: 70pt;
+    text-shadow: 1px 1px #D3D3D3;
 }
-.logoContainer h5{
-    font-size: 24pt;
+#subtext{
+    font-size: 32pt;
     font-style: italic;
 }
 #cardHeader{
@@ -70,6 +56,10 @@ main{
 
 section #cardElements{
     display:none;
+}
+
+.slides li img{
+    /*padding-top: 56.25%;/*9/16*100 - standard aspect ratio as a percent*/
 }
 
 .cards{

@@ -45,13 +45,13 @@
     <Destination>
         <name>Bvlgari Resort, Bali</name>
         <image>media/resorts/Bvlgari Resort Bali.jpg</image>
-        <price>£8,800,000</price>
+        <price>£875</price>
         <country>Indonesia</country>
     </Destination>
     <Destination>
         <name>Ko Lanta Resort</name>
         <image>media/resorts/Ko Lanta Resort Thailand.jpg</image>
-        <price>£8,800,000</price>
+        <price>£1,200</price>
         <country>Thailand</country>
     </Destination>
 </root>
