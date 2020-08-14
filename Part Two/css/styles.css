@@ -124,11 +124,6 @@ section #cardElements{
 .container{
     height: auto;
 }
-@media screen and (max-width:670px){
-    header{
-        min-height: 300px;
-    }
-}
 @media only screen and (max-width:1000px){
     .card{
         grid-column-end: span 6;
