@@ -177,7 +177,7 @@ async function validateCreateAccount(){
     if (!validEmail(email))
         toastMessage = "Error. Please enter a valid email address";//validate user
     else if (!validPassword(password))
-        toastMessage = "Error. Please enter a valid password";//validate pw
+        toastMessage = "Error. Passwords must be 6-60 characters in length, containing at least 1 lowercase and 1 uppercase letter, 1 number and 1 special character";//validate pw
     else if  (!validName(name))
         toastMessage = "Error. Please enter a valid name that contains only text and is between 2 and 30 characters long";//validate name
     else if (!validDoB(year, month, day))
@@ -213,7 +213,7 @@ function validName(name){
 }
 
 function validPassword(password){
-    var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,60}$/;//6-60 chars, at least one upp case, number, and special char
+    var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,60}$/;//6-60 chars, at least one upp case, number, and special char
     return regex.test(password);
 }
 
