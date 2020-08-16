@@ -1,7 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function(){//initial materialize methods to make form responsive
     $('.sidenav').sidenav();
-    $('.modal').modal();
-    $('.materialboxed').materialbox();
+    $('.tooltipped').tooltip();
     $('.tabs').tabs();
     $('.slider').slider();
     var today = new Date();
@@ -74,6 +73,7 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
                 image = name = xmlNodes[i].childNodes[j].firstChild.nodeValue;//XML Node value (for image source)
                 imageNode = document.createElement("img");
                 imageNode.src = image;
+                imageNode.alt = "tropical destination image";
                 newCardImage.appendChild(imageNode);//Create image node
             }
             if (xmlNodes[i].childNodes[j].nodeName =="name"){

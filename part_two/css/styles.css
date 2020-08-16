@@ -146,4 +146,10 @@ section #cardElements{
     .card{
         grid-column-end: span 6;
     }
+    #connectWithUs{
+        font-size: smaller;
+    }
+    #logo{
+        font-size: 60pt;
+    }
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en-GB">
 
 <head>
     <title>Thomas Nook: Island Adventures</title>
@@ -18,7 +19,7 @@
         <nav class="nav-wrapper blue lighten-1">
             <div class="container">
                 <a href="#" class= "transparent">
-                    <img src="media/icon.png" id="icon" class="transparent"/>
+                    <img src="media/icon.png" id="icon" class="transparent" alt="Leaf icon"/>
                 </a>
                 <a href="#" class="sidenav-trigger" data-target="mobile-links">
                     <i class="material-icons">menu</i>
@@ -41,14 +42,14 @@
 <div class="slider">
     <ul class="slides">
       <li>
-        <img src="media/tropical.jpg"> <!-- random image -->
+        <img src="media/tropical.jpg" alt="tropical sky background">
         <div class="caption center-align">
             <h2 id="logo">Thomas Nook</h2>
             <h5 class="hide-on-med-and-down" id="subtext">Find your dream getaway</h5>
         </div>
       </li>
       <li>
-        <img src="media/Tropical-Island.jpg"> <!-- random image -->
+        <img src="media/Tropical-Island.jpg" alt="tropical island background">
         <div class="caption left-align">
           <h3>Over 100 countries</h3>
           <h5 class="light grey-text text-lighten-3 hide-on-med-and-down">
@@ -58,7 +59,7 @@
         </div>
       </li>
       <li>
-        <img src="media/slider_sunset.jpg"> <!-- random image -->
+        <img src="media/slider_sunset.jpg" alt="tropical sunset background">
         <div class="caption right-align">
           <h3>Family Run</h3>
           <h5 class="light grey-text text-lighten-3 hide-on-med-and-down">
@@ -81,7 +82,7 @@
     <section class="container section scrollspy" id="loginForm">
         <div class="row">
             <div class="col s12 l4">
-                <h2 class="blue-grey-text text-darken">Connect with us</h2>
+                <h2 class="blue-grey-text text-darken" id="connectWithUs">Connect with us</h2>
                 <p>
                     Creating an account with us can greatly enhance your experience using Thomas Nook. If you want to come back for future purchases
                     connecting with us is the best way to keep yourself up to date with the latest in dream island getaways!
@@ -104,28 +105,28 @@
                         <div class="input-field">
                             <i class="material-icons prefix">email</i>
                             <input type="email"id="createEmail">
-                            <label for="createEmail">Email Address</label>
+                            <label for="createEmail" class="blue-grey-text">Email Address</label>
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">lock</i>
                             <input id="createPassword" class="materialize-textarea" type="password"></input>
-                            <label for="createPassword">Password</label>
+                            <label for="createPassword" class="blue-grey-text">Password</label>
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">description</i>
                             <textarea id="nameInput" class="materialize-textarea"></textarea>
-                            <label for="nameInput">Your name</label>
+                            <label for="nameInput" class="blue-grey-text">Your name</label>
                         </div>
                         <div class="input-field">
                                 <i class="material-icons prefix">calendar_today</i>
                             <input type="text" id="dateOfBirth" class="datepicker">
-                            <label for="dateOfBirth">Date of Birth</label>
+                            <label for="dateOfBirth" class="blue-grey-text">Date of Birth</label>
                         </div>
                         <div class="input-field">
                             <p>
                                 <label>
                                     <input type="checkbox" id="confirmationCheckbox">
-                                    <span>I confirm the above details are correct</span>
+                                    <span class="blue-grey-text">I confirm the above details are correct</span>
                                 </label>
                             </p>
                         </div>
@@ -140,12 +141,12 @@
                         <div class="input-field">
                             <i class="material-icons prefix">email</i>
                             <input type="email"id="loginEmail">
-                            <label for="loginEmail">Email Address</label>
+                            <label for="loginEmail" class="blue-grey-text">Email Address</label>
                         </div>
                         <div class="input-field">
                             <i class="material-icons prefix">lock</i>
                             <input id="loginPassword" class="materialize-textarea" type="password"></input>
-                            <label for="loginPassword">Password</label>
+                            <label for="loginPassword" class="blue-grey-text">Password</label>
                         </div>
                         <div class="input-field right">
                             <button class= "blue-grey btn waves-effect waves-light" id="logInSubmit">Submit</button>
@@ -168,19 +169,19 @@
                     <h5>Connect with us</h5><p></p>
                     <ul>
                         <li>
-                            <a href="#" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Facebook">
+                            <a href="#" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Facebook" aria-label="Facebook">
                                 <i class="fab fa-facebook"></i>
                             </a>
                             <a href="#" class="grey-text text-lighten-3">Facebook</a><p></p>
                         </li> 
                         <li> 
-                            <a href="#" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Twitter">
+                            <a href="#" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Twitter" aria-label="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
                             <a href="#" class="grey-text text-lighten-3">Twitter</a><p></p>
                         </li>
                         <li>
-                            <a href="" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Instagram">
+                            <a href="#" class="tooltipped btn-floating btn-small grey darken-4" data-tooltip="Connect with us on Instagram" aria-label="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="#" class="grey-text text-lighten-3">Instagram</a>
@@ -200,3 +201,4 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </footer>
+</html>
