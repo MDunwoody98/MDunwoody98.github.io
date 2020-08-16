@@ -68,12 +68,10 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
         newCard = document.createElement("div");//For each XML subnode of 'root', create a card element
         newCard.classList.add("card");
         for(j=0;j<xmlNodes[i].childNodes.length;j++){
-            //console.log(xmlNodes[i].childNodes[j].nodeName); //Log to check to see that nodes are coming through as expected
-            //console.log(xmlNodes[i].childNodes[j].firstChild.nodeValue); //Log to check to see that node values are coming through as expected
-            if (xmlNodes[i].childNodes[j].nodeName =="image"){
+            if (xmlNodes[i].childNodes[j].nodeName =="image"){//If this is an image node
                 newCardImage = document.createElement("div");
                 newCardImage.classList.add("card-image-container");
-                image = name = xmlNodes[i].childNodes[j].firstChild.nodeValue;
+                image = name = xmlNodes[i].childNodes[j].firstChild.nodeValue;//XML Node value (for image source)
                 imageNode = document.createElement("img");
                 imageNode.src = image;
                 newCardImage.appendChild(imageNode);//Create image node
@@ -124,7 +122,6 @@ async function loginWrapper(){
     var email = document.getElementById("loginEmail").value;
     var password = document.getElementById("loginPassword").value;
     let toastMessage = validateLogIn(email, password);
-    console.log("Wrapper "+toastMessage);
     return Promise.resolve(toastMessage);
 }
 
@@ -164,7 +161,6 @@ async function userExists(email, password){
 
 async function createAccountWrapper(){
     const toastMessage = await validateCreateAccount();
-    console.log("Wrapper "+toastMessage);
     return Promise.resolve(toastMessage);
 }
 
@@ -190,7 +186,6 @@ async function validateCreateAccount(){
         toastMessage = "Please check to confirm your details are correct";
     else {
         let emailAlreadyTaken = await emailInUse(email);
-        console.log(emailAlreadyTaken);
         if (!emailAlreadyTaken){//if email is not taken, we create account
             createAccount(email, password, name);
             toastMessage = "Account created successfully";   
@@ -258,7 +253,6 @@ async function emailInUse(email){
 
 async function createAccount(email, password, name){
     let xmlhttp = await readUserFile(false);
-    console.log(xmlhttp);
     var newUserNode = xmlhttp.createElement("user");
 
     var newEmailNode = xmlhttp.createElement("emailAddress");//create email XML node
@@ -286,4 +280,18 @@ async function createAccount(email, password, name){
         This is meant to be a demonstration/spoof of a live XML back end while keeping all logic client-side. It is for demonstration
         purposes only and is not meant to represent ideal security, which would be server side.
     */
+}
+module.exports = {//export functions for jest testing
+    loginWrapper: loginWrapper,
+    validateLogIn: validateLogIn,
+    userExists: userExists,
+    readUserFile: readUserFile,
+    validEmail: validEmail,
+    validDoB: validDoB,
+    validPassword: validPassword,
+    validName: validName,
+    emailInUse: emailInUse,
+    createAccount: createAccount,
+    createAccountWrapper: createAccountWrapper,
+    validateCreateAccount: validateCreateAccount,
 }

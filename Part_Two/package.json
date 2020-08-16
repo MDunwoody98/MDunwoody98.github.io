@@ -1,5 +1,8 @@
 {
-  "name": "Part_Two",
+  "name": "part_two",
+  "jest":{
+    "setupFiles": ["./js/setup-jest.js"]
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
