@@ -147,7 +147,7 @@ section #cardElements{
         grid-column-end: span 6;
     }
     #connectWithUs{
-        font-size: smaller;
+        font-size: 3.2rem;
     }
     #logo{
         font-size: 60pt;
