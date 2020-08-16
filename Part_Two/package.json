@@ -1,7 +1,9 @@
 {
   "name": "part_two",
-  "jest":{
-    "setupFiles": ["./js/setup-jest.js"]
+  "jest": {
+    "setupFiles": [
+      "./js/setup-jest.js"
+    ]
   },
   "version": "1.0.0",
   "description": "",
@@ -14,5 +16,8 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^26.4.0"
+  },
+  "dependencies": {
+    "browserify": "^16.5.2"
   }
 }

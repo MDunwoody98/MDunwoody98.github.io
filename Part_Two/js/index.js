@@ -281,17 +281,21 @@ async function createAccount(email, password, name){
         purposes only and is not meant to represent ideal security, which would be server side.
     */
 }
-module.exports = {//export functions for jest testing
-    loginWrapper: loginWrapper,
-    validateLogIn: validateLogIn,
-    userExists: userExists,
-    readUserFile: readUserFile,
-    validEmail: validEmail,
-    validDoB: validDoB,
-    validPassword: validPassword,
-    validName: validName,
-    emailInUse: emailInUse,
-    createAccount: createAccount,
-    createAccountWrapper: createAccountWrapper,
-    validateCreateAccount: validateCreateAccount,
+try {
+    module.exports = {//export functions for jest testing
+        loginWrapper: loginWrapper,
+        validateLogIn: validateLogIn,
+        userExists: userExists,
+        readUserFile: readUserFile,
+        validEmail: validEmail,
+        validDoB: validDoB,
+        validPassword: validPassword,
+        validName: validName,
+        emailInUse: emailInUse,
+        createAccount: createAccount,
+        createAccountWrapper: createAccountWrapper,
+        validateCreateAccount: validateCreateAccount,
+    }
+} catch (error) {
+    //this is just being used to suppress browser error for modules not being defined
 }
