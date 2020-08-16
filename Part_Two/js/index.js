@@ -17,13 +17,13 @@ $(document).ready(function(){
     $('#logInSubmit').click(function($e) {
         $e.preventDefault();
         loginWrapper().then(function(toastMessage){
-            M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+            M.toast({html: toastMessage,classes: 'blue-grey rounded'});//.then() function allows asynchronous processing
         });
     });
     $('#createSubmit').click(function($e) {
         $e.preventDefault();
         createAccountWrapper().then(function(toastMessage){
-            M.toast({html: toastMessage,classes: 'blue-grey rounded'});
+            M.toast({html: toastMessage,classes: 'blue-grey rounded'});//.then() function allows asynchronous processing
         });
     });
 });
@@ -53,7 +53,7 @@ function removeWhiteSpace(xml){//Function that removes all non visible character
     for (loopIndex =0; loopIndex < xml.childNodes.length; loopIndex++){
         var currentNode = xml.childNodes[loopIndex];
         if (currentNode.nodeType ==1){
-            removeWhiteSpace(currentNode);
+            removeWhiteSpace(currentNode);//recursively remove whitespace
         }
         if (!(/\S/.test(currentNode.nodeValue)) && currentNode.nodeType == 3){
             xml.removeChild(xml.childNodes[loopIndex--]);
@@ -92,37 +92,37 @@ function addCardNodesFromXMLDoc(xmlNodes,cardElements){
         newPTag = document.createElement("p");
         newPTag.classList.add("card-title");
         newPTag.classList.add("text-medium");
-        newPTag.appendChild(nameNode);
+        newPTag.appendChild(nameNode);//create div and p elements with required attributes
         
         newCardInfo = document.createElement("div");
         newCardInfo.classList.add("card-info");
         secondPTag = document.createElement("p");
         secondPTag.classList.add("text-medium");
-        secondPTag.appendChild(country);
+        secondPTag.appendChild(country);//create div and p elements with required attributes
         
         thirdPTag = document.createElement("p");
         thirdPTag.classList.add("text-medium");
         thirdPTag.classList.add("card-price");
-        thirdPTag.appendChild(price);
+        thirdPTag.appendChild(price);//create p element with required attributes
 
         newCardInfo.appendChild(secondPTag);
-        newCardInfo.appendChild(thirdPTag);
+        newCardInfo.appendChild(thirdPTag);//finalise card info div tag
 
-        newCardContent.appendChild(newPTag);
+        newCardContent.appendChild(newPTag);//card content has a p tag and a card info div tag
         newCardContent.appendChild(newCardInfo);
 
-        newCard.appendChild(newCardImage);
+        newCard.appendChild(newCardImage);//card contains image and content
         newCard.appendChild(newCardContent);
-        newCard.id=cardID;
-        cardContainer.appendChild(newCard);
+        newCard.id=cardID;//assign id to each card
+        cardContainer.appendChild(newCard);//add card to container in sequence
     }
 }
 
 async function loginWrapper(){
-    var email = document.getElementById("loginEmail").value;
+    var email = document.getElementById("loginEmail").value;//wrapper method for login button click
     var password = document.getElementById("loginPassword").value;
     let toastMessage = validateLogIn(email, password);
-    return Promise.resolve(toastMessage);
+    return Promise.resolve(toastMessage);//return a promise that resolves to a string
 }
 
 async function validateLogIn(email, password){
