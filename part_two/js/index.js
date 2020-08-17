@@ -31,7 +31,6 @@ function checkLogin(loggedIn){//This function changes the nav bar to say "Log Ou
     var loginSideNav = document.getElementById("loginStringMobile");
     var login = document.getElementById("loginString");
     if (loggedIn == true){
-        console.log("what");
         login.innerHTML = "Log Out";
         loginSideNav.innerHTML = "Log Out";
     }
