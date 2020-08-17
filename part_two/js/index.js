@@ -27,6 +27,20 @@ $(document).ready(function(){//initial materialize methods to make form responsi
     });
 });
 
+function checkLogin(loggedIn){//This function changes the nav bar to say "Log Out" if the user has logged in
+    var loginSideNav = document.getElementById("loginStringMobile");
+    var login = document.getElementById("loginString");
+    if (loggedIn == true){
+        console.log("what");
+        login.innerHTML = "Log Out";
+        loginSideNav.innerHTML = "Log Out";
+    }
+    else {
+        login.innerHTML = "Log In";
+        loginSideNav.innerHTML = "Log In";
+    }//Initially this used localStorage however the event handler was not reliable and calling a function was more worthwhile
+}
+
 window.addEventListener("load", function() {
 	populateDestinations();
 });
@@ -127,18 +141,21 @@ async function loginWrapper(){
 
 async function validateLogIn(email, password){
     var toastMessage = "";
+    var loggedIn = false;
     if (!validEmail(email)){//if email is not valid perform that check first
         toastMessage = "Please enter a valid email address";
     }
     else{
         var userAlreadyExists = await userExists(email, password);//if user already exists i.e. user/pass is valid
         if (userAlreadyExists){
+            loggedIn = true;
             toastMessage = "You have successfully logged in";
         }
         else{
             toastMessage = "Error. Email and Password do not match";//Don't check if the email exists as that can be used by hackers for enumeration
         }
     }
+    checkLogin(loggedIn);
     return toastMessage;
 }
 
@@ -160,6 +177,7 @@ async function userExists(email, password){
 }
 
 async function createAccountWrapper(){
+    checkLogin(false);
     const toastMessage = await validateCreateAccount();
     return Promise.resolve(toastMessage);
 }
