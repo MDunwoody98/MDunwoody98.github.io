@@ -33,6 +33,8 @@ function checkLogin(loggedIn){//This function changes the nav bar to say "Log Ou
     if (loggedIn == true){
         login.innerHTML = "Log Out";
         loginSideNav.innerHTML = "Log Out";
+        $('#loginForm').hide();
+
     }
     else {
         login.innerHTML = "Log In";
@@ -288,6 +290,7 @@ async function createAccount(email, password, name){
     newUserNode.appendChild(newPasswordNode);
     newUserNode.appendChild(newNameNode);
     var data = xmlhttp.getElementsByTagName("data")[0];//get whole XML file
+    data.appendChild(newUserNode);
     console.log(data);
     /*
         JavaScript in browser does not allow writing to file system for security reasons (rightly so), so this code here
