@@ -177,7 +177,7 @@ async function userExists(email, password){
     return validCredentials;
 }
 
-async function createAccountWrapper(){
+async function createAccountWrapper(){//Wrapper method for including create account logic
     checkLogin(false);
     const toastMessage = await validateCreateAccount();
     return Promise.resolve(toastMessage);
@@ -191,7 +191,7 @@ async function validateCreateAccount(){
     var confirmationCheckboxChecked = document.getElementById("confirmationCheckbox").checked;
     var year = dateOfBirth.getFullYear();
     var day = dateOfBirth.getDate();
-    var month = dateOfBirth.getMonth();
+    var month = dateOfBirth.getMonth();//Get all values from page
     
     if (!validEmail(email))
         toastMessage = "Error. Please enter a valid email address";//validate user
@@ -317,5 +317,5 @@ try {
         validateCreateAccount: validateCreateAccount,
     }
 } catch (error) {
-    //this is just being used to suppress browser error for modules not being defined
+    //this is just being used to suppress browser error for 'module' not being defined
 }
